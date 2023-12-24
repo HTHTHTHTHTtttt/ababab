@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>后台</title>
+</head>
+<body>
+<center>
+    {% for obj in queryset %}
+    <h2>    姓名：{{ obj.realname }}
+            性别：{{ obj.gender }}
+            个性签名：{{ obj.qianming }}
+
+        <a href="/{{ obj.id }}/detailshow/">详情</a>
+        <a href="/{{ obj.id }}/guandelete/">删除</a><br>
+
+
+
+</h2>
+    {% endfor %}
+</center>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>男生盲盒</title>
+</head>
+<style>
+    .footer {
+        position: fixed;
+        bottom:0;
+        left: 0;
+        right: 0;
+    }
+</style>
+<body>
+<center>
+    {% for obj in queryset.object_list %}
+    <h2>    商品名：{{ obj.realname }}
+            图片：{{ obj.gender }}
+            价格：{{ obj.qianming }}
+    {% endfor %}
+<div class="footer">
+    {% if queryset.has_previous %}
+    <a href="?{{ queryset.previous_page_number.querystring }}">上一页</a>
+{% endif %}
+{% for page in queryset.pages %}
+    {% if page %}
+        {% if page == queryset.number %}
+            <a href="?{{ page.querystring }}">{{ page }}</a>
+            {% else %}
+            <a href="?{{ page.querystring }}">{{ page }}</a>
+        {% endif %}
+        {% else %}
+            <a href="">...</a>
+    {% endif %}
+{% endfor %}
+{% if queryset.has_next %}
+<a href="?{{ queryset.next_page_number.querystring }}">下一页</a>
+{% endif %}
+</div>
+
+</h2>
+
+</center>
+</body>
+</html>

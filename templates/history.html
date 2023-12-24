@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<center>
+{% for obj in queryset %}
+    {% for hiobj in hiqueryset %}
+            {% if obj.id == hiobj.hid %}
+                 <h2>    姓名：{{ obj.realname }}
+                        性别：{{ obj.gender }}
+                        个性签名：{{ obj.qianming }}
+
+        <a href="/{{ obj.id }}/detailshow/">详情</a><br>
+
+</h2>
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+</center>
+
+</body>
+</html>

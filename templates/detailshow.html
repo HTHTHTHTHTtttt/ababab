@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>盲盒详细页</title>
+</head>
+<body>
+<center>
+<h2>
+{% for i in images %}
+    头像<img src='/{{ i.image }}' alt="无" width="50" height="50">
+{% endfor %}
+
+    {% for obj in queryset %}
+            姓名：{{ obj.realname }}
+            电话：{{ obj.tel }}
+            简介：{{ obj.text }}
+            年龄：{{ obj.age }}
+            地址：{{ obj.location }}
+            性别：{{ obj.gender }}<br>
+
+        <a href="/{{ obj.id }}/last/">上一个</a>
+        <a href="/{{ obj.id }}/next/">下一个</a>
+    <br><br><br>
+    <a href="/{{ obj.id }}/comment/">发表评论</a><br>
+</h2>
+    {% endfor %}
+<h1>
+    评论
+</h1>
+{% for i in comquery %}
+
+
+用户：{{ i.username }}    日期：{{ i.time }}<br>
+    {{ i.com }} <a href="/{{ i.id }}/recomment/">评论</a>{% if i.username == username %}
+        <a href="/{{ i.id }}/delete/">删除</a><br>
+    {% endif %}<br>
+    {% for u in recomquery %}
+        {% if u.nid == i.id %}
+            回复<br>
+        用户：{{ u.username }}    日期：{{ u.time }}<br>
+    {{ u.com }}<br>
+        {% endif %}
+        {% endfor %}
+
+{% endfor %}
+</center>
+</body>
+</html>

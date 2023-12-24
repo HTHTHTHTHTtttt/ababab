@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>盲盒详细页</title>
+</head>
+<body>
+<center>
+
+    {% for obj in queryset %}
+    <h2>    姓名：{{ obj.realname }}
+            头像<img src='/{{ images.image }}' alt="无" width="50" height="50">
+            电话：{{ obj.tel }}
+            简介：{{ obj.text }}
+            年龄：{{ obj.age }}
+            地址：{{ obj.location }}
+            性别：{{ obj.gender }}<br>
+
+
+    <a href="/suiji/">随机抽取</a>
+</h2>
+    {% endfor %}
+
+
+<h1>
+    评论
+</h1>
+{% for i in comquery %}
+
+用户：{{ i.username }}    日期：{{ i.time }}<br>
+    {{ i.com }}{% if i.username == username %}
+        <a href="/{{ i.id }}/delete/">删除</a>
+    {% endif %}<br>
+{% endfor %}
+</center>
+</body>
+</html>
